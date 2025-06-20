@@ -2,74 +2,63 @@ import keyboard
 import pyperclip as clipboard
 import time
 import threading
-from queue import Queue
+from PyQt5 import QtWidgets
+import sys
 
 history = []
 MAX_HISTORY = 20
-clipboard_queue = Queue()
+show_gui_flag = False
 
 
-def safe_clipboard_access():
-    """Safely access clipboard with retries and error handling"""
-    for _ in range(3):  # Try up to 3 times
-        try:
-            return clipboard.paste()
-        except Exception as e:
-            print(f"Clipboard access error: {e}")
-            time.sleep(0.1)
-    return ""
+class ClipboardUI(QtWidgets.QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Clipboard History")
+        self.setGeometry(400, 200, 400, 300)
+
+        self.list_widget = QtWidgets.QListWidget()
+        self.list_widget.itemClicked.connect(self.copy_item)
+
+        layout = QtWidgets.QVBoxLayout()
+        layout.addWidget(self.list_widget)
+        self.setLayout(layout)
+
+    def update_history(self):
+        self.list_widget.clear()
+        self.list_widget.addItems(history[::-1])
+
+    def copy_item(self, item):
+        clipboard.copy(item.text())
+        QtWidgets.QMessageBox.information(self, "Copied", f"Copied:\n{item.text()}")
+        self.hide()
 
 
 def clipboard_manager():
+    global show_gui_flag
     last_clipboard_content = ""
     while True:
         try:
-            # Check for Ctrl+C (copy)
             if keyboard.is_pressed("ctrl") and keyboard.is_pressed("c"):
-                time.sleep(0.1)  # Allow copy to complete
-                current_content = safe_clipboard_access()
+                time.sleep(0.1)
+                current_content = clipboard.paste()
 
                 if current_content and current_content != last_clipboard_content:
-                    print(
-                        f"\nCopied: {current_content[:100]}{'...' if len(current_content) > 100 else ''}"
-                    )
                     last_clipboard_content = current_content
-
-                    # Update history
                     if not history or history[-1] != current_content:
                         if len(history) >= MAX_HISTORY:
                             history.pop(0)
                         history.append(current_content)
+                        print(f"[Copied] {current_content[:80]}")
 
-                # Wait until keys are released
                 while keyboard.is_pressed("c") or keyboard.is_pressed("ctrl"):
                     time.sleep(0.01)
 
-            # Check for Ctrl+V (paste)
-            elif (
-                keyboard.is_pressed("ctrl")
-                and keyboard.is_pressed("v")
-                and not keyboard.is_pressed("shift")
-            ):
-                if last_clipboard_content:
-                    print(f"\nPasting last copied item")
-                else:
-                    print("\nClipboard empty")
-
-                while keyboard.is_pressed("v") or keyboard.is_pressed("ctrl"):
-                    time.sleep(0.01)
-
-            # Check for Ctrl+Shift+V (history)
             elif (
                 keyboard.is_pressed("ctrl")
                 and keyboard.is_pressed("shift")
                 and keyboard.is_pressed("v")
             ):
-                print("\n=== Clipboard History (Ctrl+Shift+V) ===")
-                for i, item in enumerate(reversed(history), 1):
-                    print(f"{i}. {item[:100]}{'...' if len(item) > 100 else ''}")
-                print("=" * 50)
-
+                show_gui_flag = True
                 while (
                     keyboard.is_pressed("v")
                     or keyboard.is_pressed("shift")
@@ -77,40 +66,40 @@ def clipboard_manager():
                 ):
                     time.sleep(0.01)
 
-            # Check for Win+V
-            elif keyboard.is_pressed("win") and keyboard.is_pressed("v"):
-                print("\n[Win+V pressed - Windows clipboard history]")
-                while keyboard.is_pressed("v") or keyboard.is_pressed("win"):
-                    time.sleep(0.01)
-
-            time.sleep(0.01)
+            time.sleep(0.05)
 
         except Exception as e:
-            print(f"\nError in clipboard manager: {e}")
+            print(f"\nError: {e}")
             time.sleep(1)
 
 
 def main():
-    print("Clipboard Manager Started")
-    print("Shortcuts:")
-    print("Ctrl+C - Copy to history")
-    print("Ctrl+V - Paste last item")
-    print("Ctrl+Shift+V - Show history (newest first)")
-    print("Win+V - System clipboard history")
-    print("Press Ctrl+C in terminal to exit\n")
+    global show_gui_flag
 
-    # Start manager thread
-    manager_thread = threading.Thread(target=clipboard_manager, daemon=True)
-    manager_thread.start()
+    app = QtWidgets.QApplication(sys.argv)
+    window = ClipboardUI()
+    window.hide()
 
-    try:
-        while True:
-            time.sleep(1)
-    except KeyboardInterrupt:
-        print("\nShutting down clipboard manager...")
-        # Give thread time to clean up
-        time.sleep(0.5)
+    # Background clipboard watcher
+    threading.Thread(target=clipboard_manager, daemon=True).start()
+
+    # Main Qt loop
+    timer = QtCore.QTimer()
+    timer.timeout.connect(lambda: None)
+    timer.start(100)
+
+    while True:
+        if show_gui_flag:
+            show_gui_flag = False
+            window.update_history()
+            window.show()
+            window.raise_()
+            window.activateWindow()
+        app.processEvents()
+        time.sleep(0.05)
 
 
 if __name__ == "__main__":
+    from PyQt5 import QtCore
+
     main()
