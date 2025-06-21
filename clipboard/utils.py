@@ -1,41 +1,14 @@
 import keyboard
 import pyperclip as clipboard
 import time
-import threading
-from PyQt5 import QtWidgets
-import sys
-from PyQt5 import QtCore
 
 history = []
 MAX_HISTORY = 20
 show_gui_flag = False
 
 
-class ClipboardUI(QtWidgets.QWidget):
-    def __init__(self):
-        super().__init__()
-        self.setWindowTitle("Clipboard History")
-        self.setGeometry(400, 200, 400, 300)
-
-        self.list_widget = QtWidgets.QListWidget()
-        self.list_widget.itemClicked.connect(self.copy_item)
-
-        layout = QtWidgets.QVBoxLayout()
-        layout.addWidget(self.list_widget)
-        self.setLayout(layout)
-
-    def update_history(self):
-        self.list_widget.clear()
-        self.list_widget.addItems(history[::-1])
-
-    def copy_item(self, item):
-        clipboard.copy(item.text())
-        QtWidgets.QMessageBox.information(self, "Copied", f"Copied:\n{item.text()}")
-        self.hide()
-
-
 def clipboard_manager():
-    global show_gui_flag
+    global show_gui_flag, history
     last_clipboard_content = ""
     while True:
         try:
@@ -72,34 +45,3 @@ def clipboard_manager():
         except Exception as e:
             print(f"\nError: {e}")
             time.sleep(1)
-
-
-def main():
-    global show_gui_flag
-
-    app = QtWidgets.QApplication(sys.argv)
-    window = ClipboardUI()
-    window.hide()
-
-    # Background clipboard watcher
-    threading.Thread(target=clipboard_manager, daemon=True).start()
-
-    # Main Qt loop
-    timer = QtCore.QTimer()
-    timer.timeout.connect(lambda: None)
-    timer.start(100)
-
-    while True:
-        if show_gui_flag:
-            show_gui_flag = False
-            window.update_history()
-            window.show()
-            window.raise_()
-            window.activateWindow()
-        app.processEvents()
-        time.sleep(0.05)
-
-
-if __name__ == "__main__":
-
-    main()
