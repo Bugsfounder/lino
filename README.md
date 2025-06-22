@@ -8,3 +8,12 @@ Alternate of powertoys
 pip install -e .
 
 ```
+
+### run
+
+go to root (LINO/) and run:
+
+```bash
+cd ~/workspace/lino
+python -m clipboard.main
+```
