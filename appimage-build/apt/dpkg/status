@@ -1,416 +1,11 @@
-Package: libxcb-render0
-Status: install ok installed
-Version: 1.15-1
-Architecture: amd64
-
-Package: dpkg
-Status: install ok installed
-Version: 1.21.22
-Architecture: amd64
-
-Package: libglx-mesa0
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
-Package: libdrm-common
-Status: install ok installed
-Version: 2.4.114-1
-Architecture: all
-
-Package: init-system-helpers
-Status: install ok installed
-Version: 1.65.2
-Architecture: all
-
-Package: libglx0
-Status: install ok installed
-Version: 1.6.0-1
-Architecture: amd64
-
-Package: libegl1-mesa
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
-Package: mesa-opencl-icd
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
-Package: libglvnd-core-dev
-Status: install ok installed
-Version: 1.6.0-1
-Architecture: amd64
-
-Package: libx11-dev
-Status: install ok installed
-Version: 2:1.8.4-2+deb12u2
-Architecture: amd64
-
-Package: libdrm2
-Status: install ok installed
-Version: 2.4.114-1+b1
-Architecture: amd64
-
-Package: libgl1-mesa-dri
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
-Package: ucf
-Status: install ok installed
-Version: 3.0043+nmu1+deb12u1
-Architecture: all
-
-Package: libdrm-nouveau2
-Status: install ok installed
-Version: 2.4.114-1+b1
-Architecture: amd64
-
-Package: libgl1-mesa-glx
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
-Package: sysvinit-utils
-Status: install ok installed
-Version: 3.06-4
-Architecture: amd64
-
-Package: libx11-xcb1
-Status: install ok installed
-Version: 2:1.8.4-2+deb12u2
-Architecture: amd64
-
-Package: libxcb-dri3-0
-Status: install ok installed
-Version: 1.15-1
-Architecture: amd64
-
-Package: systemd-sysv
-Status: install ok installed
-Version: 252.36-1~deb12u1
-Architecture: amd64
-
-Package: libgl1
-Status: install ok installed
-Version: 1.6.0-1
-Architecture: amd64
-
-Package: libgles2
-Status: install ok installed
-Version: 1.6.0-1
-Architecture: amd64
-
-Package: fontconfig-config
-Status: install ok installed
-Version: 2.14.1-4
-Architecture: amd64
-
-Package: libinput-bin
-Status: install ok installed
-Version: 1.22.1-1
-Architecture: amd64
-
-Package: libcap2-bin
-Status: install ok installed
-Version: 1:2.66-4+deb12u1
-Architecture: amd64
-
-Package: libdrm-tests
-Status: install ok installed
-Version: 2.4.114-1+b1
-Architecture: amd64
-
-Package: libgles2-mesa
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
-Package: util-linux
-Status: install ok installed
-Version: 2.38.1-5+deb12u3
-Architecture: amd64
-
-Package: libgles-dev
-Status: install ok installed
-Version: 1.6.0-1
-Architecture: amd64
-
-Package: libxcb-dri2-0
-Status: install ok installed
-Version: 1.15-1
-Architecture: amd64
-
-Package: libx11-windowhierarchy-perl
-Status: install ok installed
-Version: 0.004-3
-Architecture: all
-
-Package: libwayland-egl1-mesa
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
-Package: coreutils
-Status: install ok installed
-Version: 9.1-1
-Architecture: amd64
-
-Package: mount
-Status: install ok installed
-Version: 2.38.1-5+deb12u3
-Architecture: amd64
-
-Package: libwayland-client++1
-Status: install ok installed
-Version: 1.0.0-4
-Architecture: amd64
-
-Package: libgl1-mesa-dev
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
-Package: libgbm-dev
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
-Package: libx11-data
-Status: install ok installed
-Version: 2:1.8.4-2+deb12u2
-Architecture: all
-
-Package: adduser
-Status: install ok installed
-Version: 3.134
-Architecture: all
-
-Package: mesa-vulkan-drivers
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
-Package: libdrm-dev
-Status: install ok installed
-Version: 2.4.114-1+b1
-Architecture: amd64
-
-Package: libegl1
-Status: install ok installed
-Version: 1.6.0-1
-Architecture: amd64
-
-Package: base-files
-Status: install ok installed
-Version: 12.4+deb12u11
-Architecture: amd64
-
-Package: bind9-host
-Status: install ok installed
-Version: 1:9.18.33-1~deb12u2
-Architecture: amd64
-
-Package: xdg-user-dirs
-Status: install ok installed
-Version: 0.18-1
-Architecture: amd64
-
-Package: libwayland-client-extra++1
-Status: install ok installed
-Version: 1.0.0-4
-Architecture: amd64
-
-Package: libx11-xcb-perl
-Status: install ok installed
-Version: 0.19-1+b2
-Architecture: amd64
-
-Package: avahi-daemon
-Status: install ok installed
-Version: 0.8-10+deb12u1
-Architecture: amd64
-
-Package: libxcb-present0
-Status: install ok installed
-Version: 1.15-1
-Architecture: amd64
-
-Package: lsb-base
-Status: install ok installed
-Version: 11.6
-Architecture: all
-
-Package: libegl1-mesa-dev
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
-Package: libdrmaa1.0-ruby
-Status: install ok installed
-Version: 8.1.9+dfsg-10
-Architecture: all
-
-Package: iso-codes
-Status: install ok installed
-Version: 4.15.0-1
-Architecture: all
-
-Package: apt
-Status: install ok installed
-Version: 2.6.1
-Architecture: amd64
-
-Package: shared-mime-info
-Status: install ok installed
-Version: 2.2-1
-Architecture: amd64
-
-Package: libgles2-mesa-dev
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
-Package: libx11-protocol-other-perl
-Status: install ok installed
-Version: 31-1
-Architecture: all
-
-Package: libwayland-dev
-Status: install ok installed
-Version: 1.21.0-1
-Architecture: amd64
-
-Package: libegl-mesa0
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
-Package: libglx-dev
-Status: install ok installed
-Version: 1.6.0-1
-Architecture: amd64
-
-Package: mesa-utils-bin
-Status: install ok installed
-Version: 8.5.0-1
-Architecture: amd64
-
-Package: debianutils
-Status: install ok installed
-Version: 5.7-0.5~deb12u1
-Architecture: amd64
-
-Package: libwayland-cursor++1
-Status: install ok installed
-Version: 1.0.0-4
-Architecture: amd64
-
-Package: fontconfig
-Status: install ok installed
-Version: 2.14.1-4
-Architecture: amd64
-
-Package: libwayland-server0
-Status: install ok installed
-Version: 1.21.0-1
-Architecture: amd64
-
-Package: libdrm-amdgpu1
-Status: install ok installed
-Version: 2.4.114-1+b1
-Architecture: amd64
-
-Package: libwayland-bin
-Status: install ok installed
-Version: 1.21.0-1
-Architecture: amd64
-
-Package: passwd
-Status: install ok installed
-Version: 1:4.13+dfsg1-1+deb12u1
-Architecture: amd64
-
-Package: libx11-doc
-Status: install ok installed
-Version: 2:1.8.4-2+deb12u2
-Architecture: all
-
-Package: debconf
-Status: install ok installed
-Version: 1.5.82
-Architecture: all
-
-Package: libpam-modules-bin
-Status: install ok installed
-Version: 1.5.2-6+deb12u1
-Architecture: amd64
-
-Package: libegl-dev
-Status: install ok installed
-Version: 1.6.0-1
-Architecture: amd64
-
-Package: libx11-keyboard-perl
-Status: install ok installed
-Version: 1.4-7
-Architecture: all
-
-Package: libx11-freedesktop-desktopentry-perl
-Status: install ok installed
-Version: 0.04-5
-Architecture: all
-
-Package: libgbm1
-Status: install ok installed
-Version: 22.3.6-1+deb12u1
-Architecture: amd64
-
 Package: mesa-utils
 Status: install ok installed
 Version: 8.5.0-1
 Architecture: amd64
 
-Package: libxcb-shape0
-Status: install ok installed
-Version: 1.15-1
-Architecture: amd64
-
-Package: libdrmaa1.0-java-doc
-Status: install ok installed
-Version: 8.1.9+dfsg-10
-Architecture: all
-
-Package: libx11-6
-Status: install ok installed
-Version: 2:1.8.4-2+deb12u2
-Architecture: amd64
-
-Package: libxcb1
-Status: install ok installed
-Version: 1.15-1
-Architecture: amd64
-
-Package: libwayland-egl1
+Package: libwayland-client0
 Status: install ok installed
 Version: 1.21.0-1
-Architecture: amd64
-
-Package: libwayland-doc
-Status: install ok installed
-Version: 1.21.0-1
-Architecture: all
-
-Package: libdrm-intel1
-Status: install ok installed
-Version: 2.4.114-1+b1
-Architecture: amd64
-
-Package: libxcb-xfixes0
-Status: install ok installed
-Version: 1.15-1
 Architecture: amd64
 
 Package: mesa-va-drivers
@@ -418,27 +13,32 @@ Status: install ok installed
 Version: 22.3.6-1+deb12u1
 Architecture: amd64
 
-Package: libx11-xcb-dev
+Package: libxcb-xfixes0
 Status: install ok installed
-Version: 2:1.8.4-2+deb12u2
+Version: 1.15-1
 Architecture: amd64
 
-Package: libx11-guitest-perl
+Package: mesa-vulkan-drivers
 Status: install ok installed
-Version: 0.28-3+b1
+Version: 22.3.6-1+deb12u1
 Architecture: amd64
 
-Package: libwayland-egl++1
+Package: libx11-protocol-perl
 Status: install ok installed
-Version: 1.0.0-4
+Version: 0.56-9
+Architecture: all
+
+Package: libxcb-dri3-0
+Status: install ok installed
+Version: 1.15-1
 Architecture: amd64
 
-Package: libwayland-server++1
+Package: init-system-helpers
 Status: install ok installed
-Version: 1.0.0-4
-Architecture: amd64
+Version: 1.65.2
+Architecture: all
 
-Package: mesa-common-dev
+Package: libegl1-mesa
 Status: install ok installed
 Version: 22.3.6-1+deb12u1
 Architecture: amd64
@@ -448,54 +48,19 @@ Status: install ok installed
 Version: 1.6.0-1
 Architecture: amd64
 
-Package: mesa-vdpau-drivers
+Package: mesa-utils-bin
 Status: install ok installed
-Version: 22.3.6-1+deb12u1
+Version: 8.5.0-1
 Architecture: amd64
 
-Package: fdisk
+Package: apt
 Status: install ok installed
-Version: 2.38.1-5+deb12u3
+Version: 2.6.1
 Architecture: amd64
 
-Package: libx11-protocol-perl
+Package: libdrm-tests
 Status: install ok installed
-Version: 0.56-9
-Architecture: all
-
-Package: libwayland-egl-backend-dev
-Status: install ok installed
-Version: 1.21.0-1
-Architecture: amd64
-
-Package: libxcb-glx0
-Status: install ok installed
-Version: 1.15-1
-Architecture: amd64
-
-Package: libwayland-client0
-Status: install ok installed
-Version: 1.21.0-1
-Architecture: amd64
-
-Package: libgles1
-Status: install ok installed
-Version: 1.6.0-1
-Architecture: amd64
-
-Package: x11-common
-Status: install ok installed
-Version: 1:7.7+23
-Architecture: all
-
-Package: libxcb-shm0
-Status: install ok installed
-Version: 1.15-1
-Architecture: amd64
-
-Package: libwayland-cursor0
-Status: install ok installed
-Version: 1.21.0-1
+Version: 2.4.114-1+b1
 Architecture: amd64
 
 Package: libdrm-radeon1
@@ -503,24 +68,34 @@ Status: install ok installed
 Version: 2.4.114-1+b1
 Architecture: amd64
 
-Package: libglvnd-dev
-Status: install ok installed
-Version: 1.6.0-1
-Architecture: amd64
-
-Package: libglapi-mesa
+Package: libgl1-mesa-dev
 Status: install ok installed
 Version: 22.3.6-1+deb12u1
 Architecture: amd64
 
-Package: libdrmaa1.0-java
+Package: libinput-bin
 Status: install ok installed
-Version: 8.1.9+dfsg-10
+Version: 1.22.1-1
+Architecture: amd64
+
+Package: libdrm2
+Status: install ok installed
+Version: 2.4.114-1+b1
+Architecture: amd64
+
+Package: libx11-dev
+Status: install ok installed
+Version: 2:1.8.4-2+deb12u2
+Architecture: amd64
+
+Package: lsb-base
+Status: install ok installed
+Version: 11.6
 Architecture: all
 
-Package: dbus
+Package: libegl1
 Status: install ok installed
-Version: 1.14.10-1~deb12u1
+Version: 1.6.0-1
 Architecture: amd64
 
 Package: libpam-runtime
@@ -528,8 +103,433 @@ Status: install ok installed
 Version: 1.5.2-6+deb12u1
 Architecture: all
 
+Package: sysvinit-utils
+Status: install ok installed
+Version: 3.06-4
+Architecture: amd64
+
+Package: systemd-sysv
+Status: install ok installed
+Version: 252.36-1~deb12u1
+Architecture: amd64
+
+Package: libglapi-mesa
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: libglx-mesa0
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: libxcb-shape0
+Status: install ok installed
+Version: 1.15-1
+Architecture: amd64
+
+Package: util-linux
+Status: install ok installed
+Version: 2.38.1-5+deb12u3
+Architecture: amd64
+
+Package: coreutils
+Status: install ok installed
+Version: 9.1-1
+Architecture: amd64
+
+Package: libdrm-amdgpu1
+Status: install ok installed
+Version: 2.4.114-1+b1
+Architecture: amd64
+
+Package: libx11-doc
+Status: install ok installed
+Version: 2:1.8.4-2+deb12u2
+Architecture: all
+
+Package: libxcb-dri2-0
+Status: install ok installed
+Version: 1.15-1
+Architecture: amd64
+
+Package: libglvnd-dev
+Status: install ok installed
+Version: 1.6.0-1
+Architecture: amd64
+
+Package: base-files
+Status: install ok installed
+Version: 12.4+deb12u11
+Architecture: amd64
+
+Package: libxcb-shm0
+Status: install ok installed
+Version: 1.15-1
+Architecture: amd64
+
+Package: libdrmaa1.0-ruby
+Status: install ok installed
+Version: 8.1.9+dfsg-10
+Architecture: all
+
+Package: libgles2-mesa-dev
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: mesa-common-dev
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: libx11-windowhierarchy-perl
+Status: install ok installed
+Version: 0.004-3
+Architecture: all
+
+Package: libxcb-render0
+Status: install ok installed
+Version: 1.15-1
+Architecture: amd64
+
+Package: libwayland-egl++1
+Status: install ok installed
+Version: 1.0.0-4
+Architecture: amd64
+
+Package: libgles2
+Status: install ok installed
+Version: 1.6.0-1
+Architecture: amd64
+
+Package: libgles-dev
+Status: install ok installed
+Version: 1.6.0-1
+Architecture: amd64
+
+Package: libgl1
+Status: install ok installed
+Version: 1.6.0-1
+Architecture: amd64
+
+Package: libegl1-mesa-dev
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: libegl-mesa0
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: shared-mime-info
+Status: install ok installed
+Version: 2.2-1
+Architecture: amd64
+
+Package: libglx0
+Status: install ok installed
+Version: 1.6.0-1
+Architecture: amd64
+
+Package: libx11-xcb1
+Status: install ok installed
+Version: 2:1.8.4-2+deb12u2
+Architecture: amd64
+
+Package: libwayland-server++1
+Status: install ok installed
+Version: 1.0.0-4
+Architecture: amd64
+
+Package: avahi-daemon
+Status: install ok installed
+Version: 0.8-10+deb12u1
+Architecture: amd64
+
+Package: dpkg
+Status: install ok installed
+Version: 1.21.22
+Architecture: amd64
+
+Package: libdrmaa1.0-java-doc
+Status: install ok installed
+Version: 8.1.9+dfsg-10
+Architecture: all
+
+Package: mesa-opencl-icd
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: mesa-vdpau-drivers
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: libxcb-present0
+Status: install ok installed
+Version: 1.15-1
+Architecture: amd64
+
+Package: libxcb1
+Status: install ok installed
+Version: 1.15-1
+Architecture: amd64
+
+Package: libpam-modules-bin
+Status: install ok installed
+Version: 1.5.2-6+deb12u1
+Architecture: amd64
+
+Package: libdrm-dev
+Status: install ok installed
+Version: 2.4.114-1+b1
+Architecture: amd64
+
+Package: libwayland-doc
+Status: install ok installed
+Version: 1.21.0-1
+Architecture: all
+
+Package: libx11-freedesktop-desktopentry-perl
+Status: install ok installed
+Version: 0.04-5
+Architecture: all
+
+Package: libwayland-egl-backend-dev
+Status: install ok installed
+Version: 1.21.0-1
+Architecture: amd64
+
+Package: libdrmaa1.0-java
+Status: install ok installed
+Version: 8.1.9+dfsg-10
+Architecture: all
+
+Package: libx11-data
+Status: install ok installed
+Version: 2:1.8.4-2+deb12u2
+Architecture: all
+
+Package: libdrm-nouveau2
+Status: install ok installed
+Version: 2.4.114-1+b1
+Architecture: amd64
+
+Package: libwayland-egl1-mesa
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: libgbm-dev
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: libwayland-cursor++1
+Status: install ok installed
+Version: 1.0.0-4
+Architecture: amd64
+
+Package: mount
+Status: install ok installed
+Version: 2.38.1-5+deb12u3
+Architecture: amd64
+
+Package: dbus
+Status: install ok installed
+Version: 1.14.10-1~deb12u1
+Architecture: amd64
+
+Package: libgles1
+Status: install ok installed
+Version: 1.6.0-1
+Architecture: amd64
+
+Package: libx11-guitest-perl
+Status: install ok installed
+Version: 0.28-3+b1
+Architecture: amd64
+
+Package: libwayland-egl1
+Status: install ok installed
+Version: 1.21.0-1
+Architecture: amd64
+
+Package: libglvnd-core-dev
+Status: install ok installed
+Version: 1.6.0-1
+Architecture: amd64
+
+Package: libx11-keyboard-perl
+Status: install ok installed
+Version: 1.4-7
+Architecture: all
+
+Package: bind9-host
+Status: install ok installed
+Version: 1:9.18.33-1~deb12u2
+Architecture: amd64
+
+Package: debconf
+Status: install ok installed
+Version: 1.5.82
+Architecture: all
+
+Package: libwayland-server0
+Status: install ok installed
+Version: 1.21.0-1
+Architecture: amd64
+
+Package: debianutils
+Status: install ok installed
+Version: 5.7-0.5~deb12u1
+Architecture: amd64
+
+Package: fdisk
+Status: install ok installed
+Version: 2.38.1-5+deb12u3
+Architecture: amd64
+
+Package: libx11-6
+Status: install ok installed
+Version: 2:1.8.4-2+deb12u2
+Architecture: amd64
+
+Package: libx11-protocol-other-perl
+Status: install ok installed
+Version: 31-1
+Architecture: all
+
+Package: libwayland-cursor0
+Status: install ok installed
+Version: 1.21.0-1
+Architecture: amd64
+
+Package: libcap2-bin
+Status: install ok installed
+Version: 1:2.66-4+deb12u1
+Architecture: amd64
+
+Package: x11-common
+Status: install ok installed
+Version: 1:7.7+23
+Architecture: all
+
+Package: libgles2-mesa
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: ucf
+Status: install ok installed
+Version: 3.0043+nmu1+deb12u1
+Architecture: all
+
+Package: fontconfig-config
+Status: install ok installed
+Version: 2.14.1-4
+Architecture: amd64
+
+Package: libgl1-mesa-dri
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: libx11-xcb-perl
+Status: install ok installed
+Version: 0.19-1+b2
+Architecture: amd64
+
+Package: libxcb-glx0
+Status: install ok installed
+Version: 1.15-1
+Architecture: amd64
+
+Package: libx11-xcb-dev
+Status: install ok installed
+Version: 2:1.8.4-2+deb12u2
+Architecture: amd64
+
+Package: xdg-user-dirs
+Status: install ok installed
+Version: 0.18-1
+Architecture: amd64
+
+Package: libgl1-mesa-glx
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: fontconfig
+Status: install ok installed
+Version: 2.14.1-4
+Architecture: amd64
+
+Package: libdrm-common
+Status: install ok installed
+Version: 2.4.114-1
+Architecture: all
+
+Package: libwayland-client-extra++1
+Status: install ok installed
+Version: 1.0.0-4
+Architecture: amd64
+
+Package: libegl-dev
+Status: install ok installed
+Version: 1.6.0-1
+Architecture: amd64
+
+Package: libwayland-dev
+Status: install ok installed
+Version: 1.21.0-1
+Architecture: amd64
+
+Package: passwd
+Status: install ok installed
+Version: 1:4.13+dfsg1-1+deb12u1
+Architecture: amd64
+
 Package: systemd
 Status: install ok installed
 Version: 252.36-1~deb12u1
 Architecture: amd64
+
+Package: libgbm1
+Status: install ok installed
+Version: 22.3.6-1+deb12u1
+Architecture: amd64
+
+Package: libglx-dev
+Status: install ok installed
+Version: 1.6.0-1
+Architecture: amd64
+
+Package: libwayland-client++1
+Status: install ok installed
+Version: 1.0.0-4
+Architecture: amd64
+
+Package: libdrm-intel1
+Status: install ok installed
+Version: 2.4.114-1+b1
+Architecture: amd64
+
+Package: adduser
+Status: install ok installed
+Version: 3.134
+Architecture: all
+
+Package: libwayland-bin
+Status: install ok installed
+Version: 1.21.0-1
+Architecture: amd64
+
+Package: iso-codes
+Status: install ok installed
+Version: 4.15.0-1
+Architecture: all
 
