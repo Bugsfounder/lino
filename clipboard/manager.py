@@ -18,12 +18,14 @@ class ClipboardManager:
             self.add_to_history(current_content)
 
     def add_to_history(self, content):
+        if content in self.history:
+            self.history.remove(content)
         if not self.history or self.history[-1] != content:
             if len(self.history) >= self.max_history:
                 self.history.pop(0)
             self.history.append(content)
             print(
-                f"[Copied] {content[:80]}..."
+                f"[Added] {content[:80]}..."
                 if len(content) > 80
-                else f"[Copied] {content}"
+                else f"[Added] {content}"
             )

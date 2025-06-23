@@ -1,47 +1,26 @@
-import keyboard
-import pyperclip as clipboard
-import time
-
-history = []
-MAX_HISTORY = 20
-show_gui_flag = False
+# clipboard/manager.py
+from PyQt5.QtCore import QTimer
+import pyperclip
 
 
-def clipboard_manager():
-    global show_gui_flag, history
-    last_clipboard_content = ""
-    while True:
-        try:
-            if keyboard.is_pressed("ctrl") and keyboard.is_pressed("c"):
-                time.sleep(0.1)
-                current_content = clipboard.paste()
+class ClipboardManager:
+    def __init__(self):
+        self.history = []
+        self.clipboard = pyperclip
+        self.last_clip = ""
+        self.MAX_HISTORY = 20
 
-                if current_content and current_content != last_clipboard_content:
-                    last_clipboard_content = current_content
-                    if not history or history[-1] != current_content:
-                        if len(history) >= MAX_HISTORY:
-                            history.pop(0)
-                        history.append(current_content)
-                        print(f"[Copied] {current_content[:80]}")
+    def start_monitoring(self):
+        self.timer = QTimer()
+        self.timer.timeout.connect(self.check_clipboard)
+        self.timer.start(300)  # check every 300 ms
 
-                while keyboard.is_pressed("c") or keyboard.is_pressed("ctrl"):
-                    time.sleep(0.01)
-
-            elif (
-                keyboard.is_pressed("ctrl")
-                and keyboard.is_pressed("shift")
-                and keyboard.is_pressed("v")
-            ):
-                show_gui_flag = True
-                while (
-                    keyboard.is_pressed("v")
-                    or keyboard.is_pressed("shift")
-                    or keyboard.is_pressed("ctrl")
-                ):
-                    time.sleep(0.01)
-
-            time.sleep(0.05)
-
-        except Exception as e:
-            print(f"\nError: {e}")
-            time.sleep(1)
+    def check_clipboard(self):
+        current = self.clipboard.paste()
+        if current != self.last_clip and current.strip():
+            self.last_clip = current
+            if not self.history or self.history[-1] != current:
+                if len(self.history) >= self.MAX_HISTORY:
+                    self.history.pop(0)
+                self.history.append(current)
+                print(f"[Copied] {current[:80]}")
