@@ -23,6 +23,11 @@ class QuickLauncher(QWidget):
         self.setWindowTitle("Lino Quick Launcher")
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
         self.setGeometry(600, 300, 400, 50)
+        screen = QApplication.primaryScreen()
+        rect = screen.availableGeometry()
+        x = (rect.width() - self.width()) // 2
+        y = (rect.height() - self.height()) // 2
+        self.move(x, y)
 
         self.input = QLineEdit(self)
         self.input.setGeometry(10, 10, 380, 30)
@@ -33,9 +38,9 @@ class QuickLauncher(QWidget):
         self.list_widget = QListWidget(self)
         self.list_widget.setGeometry(10, 45, 380, 100)
         self.list_widget.hide()
-        self.input.textChanged.connect(self.update_dropdown)
+        # self.input.textChanged.connect(self.update_dropdown)
 
-        self.list_widget.itemClicked.connect(self.item_selected)
+        # self.list_widget.itemClicked.connect(self.item_selected)
 
     def is_expression(text):
         return text.startswith("=") and re.fullmatch(r"=[0-9+\-*/%.() ]+", text)
@@ -66,26 +71,9 @@ class QuickLauncher(QWidget):
             self.hide()
             self.input.clear()
 
-    def update_dropdown(self, text):
-        if not text:
-            self.list_widget.hide()
-            return
-
-        # dummy static suggestions (replace with actual `.desktop` list later)
-        suggestions = ["firefox", "code", "terminal", "calculator"]
-        matches = [s for s in suggestions if text.lower() in s.lower()]
-
-        self.list_widget.clear()
-        if matches:
-            for match in matches:
-                QListWidgetItem(match, self.list_widget)
-            self.list_widget.show()
-        else:
-            self.list_widget.hide()
-
-    def item_selected(self, item):
-        self.input.setText(item.text())
-        self.launch_command()
+    # def item_selected(self, item):
+    #     self.input.setText(item.text())
+    #     self.launch_command()
 
 
 if __name__ == "__main__":

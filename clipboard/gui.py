@@ -1,4 +1,8 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
+from PyQt5.QtWidgets import (
+    QApplication,
+)
+from PyQt5.QtCore import Qt
 
 
 class ClipboardUI(QtWidgets.QWidget):
@@ -10,6 +14,12 @@ class ClipboardUI(QtWidgets.QWidget):
             QtCore.Qt.WindowStaysOnTopHint | QtCore.Qt.FramelessWindowHint
         )
         self.setGeometry(400, 200, 500, 400)
+
+        screen = QApplication.primaryScreen()
+        rect = screen.availableGeometry()
+        x = (rect.width() - self.width()) // 2
+        y = (rect.height() - self.height()) // 2
+        self.move(x, y)
 
         self.setup_ui()
         self.hide()
@@ -68,3 +78,7 @@ class ClipboardUI(QtWidgets.QWidget):
     def closeEvent(self, event):
         event.ignore()
         self.hide()
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Escape:
+            self.hide()
