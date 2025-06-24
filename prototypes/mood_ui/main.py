@@ -7,18 +7,32 @@ class DropDownWindow(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowFlags(QtCore.Qt.Popup | QtCore.Qt.FramelessWindowHint)
-        self.setFixedSize(200, 100)
-        if hasattr(self, "tray") and self.tray.isVisible():
-            self.tray.hide()
-            self.tray.deleteLater()
-        layout = QtWidgets.QVBoxLayout()
-        label = QtWidgets.QLabel("Dropdown UI Here")
-        label1 = QtWidgets.QLabel("Dropdown UI Here")
-        label2 = QtWidgets.QLabel("Dropdown UI Here")
-        layout.addWidget(label)
-        layout.addWidget(label2)
-        layout.addWidget(label1)
+        self.setFixedSize(300, 200)
+
+        layout = QtWidgets.QGridLayout()
+
+        # Generate buttons dynamically
+        count = 0
+        total = 15  # for m1 to m15, you can change to n
+        cols = 5  # 5 buttons per row
+
+        for i in range(total):
+            btn = QPushButton(f"m{i+1}")
+            btn.setProperty("value", f"value-{i+1}")
+            btn.setFixedSize(50, 30)
+            btn.clicked.connect(lambda _, x=i + 1: self.on_button_click(x))
+            row = i // cols
+            col = i % cols
+            layout.addWidget(btn, row, col)
+
         self.setLayout(layout)
+
+    def on_button_click(self, index):
+        btn = self.sender()
+        val = btn.property("value")
+
+        print(f"Button m{index} clicked value {val}")
+        self.hide()
 
 
 class TrayApp(QtWidgets.QApplication):
