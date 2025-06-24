@@ -1,2 +1,2 @@
 #!/bin/bash
-python -m clipboard.main
+python -m runner.main
