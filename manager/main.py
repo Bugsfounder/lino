@@ -13,6 +13,7 @@ modules = [
         "name": "Quick Launcher",
         "script": "quick_launcher/quick_launcher.py",
         "icon": "assets/icons/icon.png",
+        "shortcut-key": "Ctrl+Space",
     },
 ]
 
