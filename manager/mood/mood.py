@@ -16,32 +16,33 @@ class DropDownWindow(QtWidgets.QWidget):
         self.setup_shortcuts()
 
     def setup_ui(self):
-        layout = QtWidgets.QGridLayout()
+        grid_layout = QtWidgets.QGridLayout()
         cols = 5
         for i, mod in enumerate(self.modules):
             btn = QPushButton()
-            btn.setToolTip(f"{mod["name"]} - {mod['shortcut-key']}")
-            # btn.setStyleSheet(
-            #     """
-            #         background-color: #3498db;
-            #         color: white;
-            #         font-weight: bold;
-            #         border: 5px solid red;
-
-            #         border-radius: 8px;
-            #         padding: 6px;
-            #     }
-            #     """
-            # )
-            # btn.setStyleSheet("QPushButton { cursor: pointer; }")
+            btn.setToolTip(f"{mod['name']} - {mod.get('shortcut-key', '')}")
             btn.setIcon(QtGui.QIcon(mod["icon"]))
             btn.setFixedSize(30, 30)
             btn.setIconSize(QtCore.QSize(24, 24))
             btn.setProperty("script", mod["script"])
             btn.clicked.connect(self.launch_module)
             row, col = divmod(i, cols)
-            layout.addWidget(btn, row, col)
-        self.setLayout(layout)
+            grid_layout.addWidget(btn, row, col)
+
+        # Exit hyperlink label
+        exit_label = QtWidgets.QLabel('<a href="#">Exit</a>')
+        exit_label.setTextFormat(QtCore.Qt.RichText)
+        exit_label.setTextInteractionFlags(QtCore.Qt.TextBrowserInteraction)
+        exit_label.setOpenExternalLinks(False)
+        exit_label.linkActivated.connect(QtWidgets.QApplication.quit)
+        exit_label.setAlignment(QtCore.Qt.AlignRight)
+        exit_label.setStyleSheet("color: #3498db; padding: 4px;")
+
+        # Combine grid and footer
+        main_layout = QtWidgets.QVBoxLayout()
+        main_layout.addLayout(grid_layout)
+        main_layout.addWidget(exit_label)
+        self.setLayout(main_layout)
 
     def setup_shortcuts(self):
         for mod in self.modules:
