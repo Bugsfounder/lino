@@ -17,7 +17,7 @@ class DropDownWindow(QtWidgets.QWidget):
         cols = 5
         for i, mod in enumerate(self.modules):
             btn = QPushButton()
-            btn.setText(mod["name"])
+            btn.setToolTip(mod["name"])
             btn.setIcon(QtGui.QIcon(mod["icon"]))
             btn.setIconSize(QtCore.QSize(24, 24))
             btn.setProperty("script", mod["script"])

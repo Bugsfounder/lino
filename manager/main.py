@@ -7,6 +7,7 @@ modules = [
         "name": "Clipboard",
         "script": "clipboard/clipboard.py",
         "icon": "assets/icons/icon.png",
+        "shortcut-key": "Ctrl+Shift+C",
     },
     {
         "name": "Quick Launcher",
