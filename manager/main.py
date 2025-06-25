@@ -6,13 +6,13 @@ modules = [
     {
         "name": "Clipboard",
         "script": "clipboard/clipboard.py",
-        "icon": "assets/icons/icon.png",
+        "icon": "assets/icons/clipboard.png",
         "shortcut-key": "Ctrl+Shift+C",
     },
     {
         "name": "Quick Launcher",
         "script": "quick_launcher/quick_launcher.py",
-        "icon": "assets/icons/icon.png",
+        "icon": "assets/icons/quick_launcher.png",
         "shortcut-key": "Ctrl+Space",
     },
 ]

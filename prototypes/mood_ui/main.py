@@ -38,8 +38,9 @@ class DropDownWindow(QtWidgets.QWidget):
 class TrayApp(QtWidgets.QApplication):
     def __init__(self, argv):
         super().__init__(argv)
-        self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon("icon.png"))
-        self.tray.setToolTip("Tray App Example")
+        # self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon("icon.png"))
+        self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon("/assets/lino.png"))
+        self.tray.setToolTip("hello from lino")
         self.dropdown = DropDownWindow()
         self.tray.activated.connect(self.on_tray_activated)
         self.tray.show()

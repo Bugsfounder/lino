@@ -2,8 +2,6 @@ import sys
 from PyQt5 import QtWidgets, QtGui, QtCore
 from PyQt5.QtWidgets import QPushButton
 import subprocess
-
-
 from PyQt5.QtGui import QKeySequence
 from PyQt5.QtWidgets import QShortcut
 
@@ -23,7 +21,21 @@ class DropDownWindow(QtWidgets.QWidget):
         for i, mod in enumerate(self.modules):
             btn = QPushButton()
             btn.setToolTip(f"{mod["name"]} - {mod['shortcut-key']}")
+            # btn.setStyleSheet(
+            #     """
+            #         background-color: #3498db;
+            #         color: white;
+            #         font-weight: bold;
+            #         border: 5px solid red;
+
+            #         border-radius: 8px;
+            #         padding: 6px;
+            #     }
+            #     """
+            # )
+            # btn.setStyleSheet("QPushButton { cursor: pointer; }")
             btn.setIcon(QtGui.QIcon(mod["icon"]))
+            btn.setFixedSize(30, 30)
             btn.setIconSize(QtCore.QSize(24, 24))
             btn.setProperty("script", mod["script"])
             btn.clicked.connect(self.launch_module)
