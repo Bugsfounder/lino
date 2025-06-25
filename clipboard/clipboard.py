@@ -4,8 +4,8 @@
 import sys
 from PyQt5 import QtWidgets, QtGui
 
-from clipboard.manager import ClipboardManager
-from clipboard.gui import ClipboardUI
+from manager import ClipboardManager
+from gui import ClipboardUI
 
 
 def main():
