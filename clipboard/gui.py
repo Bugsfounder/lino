@@ -11,6 +11,11 @@ class ClipboardUI(QtWidgets.QWidget):
         layout.addWidget(self.list_widget)
         self.setLayout(layout)
 
+        clear_btn = QtWidgets.QPushButton("🗑 Clear History")
+        clear_btn.clicked.connect(self.clear_history)
+        clear_btn.setStyleSheet("color: red; font-weight: bold;")
+        layout.addWidget(clear_btn)
+
     def update_history(self):
         self.list_widget.clear()
         self.list_widget.addItems(self.manager.history[::-1])
@@ -33,3 +38,7 @@ class ClipboardUI(QtWidgets.QWidget):
     def keyPressEvent(self, event):
         if event.key() == QtCore.Qt.Key_Escape:
             self.hide()
+
+    def clear_history(self):
+        self.manager.history.clear()
+        self.update_history()

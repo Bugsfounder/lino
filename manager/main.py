@@ -8,13 +8,14 @@ from PyQt5 import QtWidgets, QtGui, QtCore
 from mood.mood import DropDownWindow
 from clipboard.manager import ClipboardManager
 from clipboard.gui import ClipboardUI
+from functools import partial
 from quick_launcher.quick_launcher import QuickLauncher  # Import your QuickLauncher
 
 modules = [
     {
         "name": "Clipboard",
         "icon": "assets/icons/clipboard.png",
-        "shortcut-key": "Ctrl+Shift+C",
+        "shortcut-key": "Ctrl+Shift+c",
         "key": "clipboard",
     },
     {
