@@ -28,6 +28,17 @@ class DropDownWindow(QtWidgets.QWidget):
             )
             row, col = divmod(i, cols)
             layout.addWidget(btn, row, col)
+
+        # Add Exit link at bottom
+        exit_label = QtWidgets.QLabel('<a href="#">Exit</a>')
+        exit_label.setStyleSheet("color: blue; text-decoration: underline;")
+        exit_label.setTextInteractionFlags(QtCore.Qt.TextBrowserInteraction)
+        exit_label.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        exit_label.linkActivated.connect(QtWidgets.qApp.quit)
+
+        layout.addWidget(
+            exit_label, layout.rowCount(), 0, 1, cols, alignment=QtCore.Qt.AlignCenter
+        )
         self.setLayout(layout)
 
     def setup_shortcuts(self):
