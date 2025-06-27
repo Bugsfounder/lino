@@ -13,7 +13,7 @@ class ClipboardUI(QtWidgets.QWidget):
 
         clear_btn = QtWidgets.QPushButton("Clear History")
         clear_btn.clicked.connect(self.clear_history)
-        clear_btn.setStyleSheet("color: red; font-weight: bold;")
+        # clear_btn.setStyleSheet("color: red; font-weight: bold;")
         layout.addWidget(clear_btn)
 
     def update_history(self):

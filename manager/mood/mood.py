@@ -20,7 +20,7 @@ class DropDownWindow(QtWidgets.QWidget):
         for i, mod in enumerate(self.modules):
             btn = QtWidgets.QPushButton()
             btn.setToolTip(f"{mod["name"]} - {mod['shortcut-key']}")
-            btn.setText(mod["name"])
+            # btn.setText(mod["name"])
             btn.setIcon(QtGui.QIcon(mod["icon"]))
             btn.setIconSize(QtCore.QSize(24, 24))
             btn.clicked.connect(
