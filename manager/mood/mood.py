@@ -1,5 +1,7 @@
 # manager/mood/mood.py
 from PyQt5 import QtWidgets, QtGui, QtCore
+from PyQt5.QtWidgets import QShortcut
+from PyQt5.QtGui import QKeySequence
 
 
 class DropDownWindow(QtWidgets.QWidget):
@@ -10,12 +12,14 @@ class DropDownWindow(QtWidgets.QWidget):
         self.setWindowFlags(QtCore.Qt.Popup)
         self.setFixedSize(300, 200)
         self.setup_ui()
+        self.setup_shortcuts()
 
     def setup_ui(self):
         layout = QtWidgets.QGridLayout()
         cols = 2
         for i, mod in enumerate(self.modules):
             btn = QtWidgets.QPushButton()
+            btn.setToolTip(f"{mod["name"]} - {mod['shortcut-key']}")
             btn.setText(mod["name"])
             btn.setIcon(QtGui.QIcon(mod["icon"]))
             btn.setIconSize(QtCore.QSize(24, 24))
@@ -25,6 +29,15 @@ class DropDownWindow(QtWidgets.QWidget):
             row, col = divmod(i, cols)
             layout.addWidget(btn, row, col)
         self.setLayout(layout)
+
+    def setup_shortcuts(self):
+        for mod in self.modules:
+            shortcut_key = mod.get("shortcut-key")
+            if shortcut_key:
+                shortcut = QShortcut(QKeySequence(shortcut_key), self)
+                shortcut.activated.connect(
+                    lambda key=mod["key"]: self.tray_app.launch_module(key)
+                )
 
     def show_at_cursor(self):
         cursor_pos = QtGui.QCursor.pos()
