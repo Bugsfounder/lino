@@ -67,7 +67,7 @@ class QuickLauncher(QWidget):
         super().__init__()
         self.setWindowTitle("Lino Quick Launcher")
         self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
-        self.setFixedSize(400, 420)  # More vertical space for dropdown
+        self.setMinimumSize(400, 200)  # Allow resizing, but not too small
 
         # Set dark palette
         dark_palette = QPalette()
@@ -172,6 +172,9 @@ class QuickLauncher(QWidget):
         self.search_timer = QTimer()
         self.search_timer.setSingleShot(True)
         self.search_timer.timeout.connect(self._do_search)
+
+        self._drag_active = False
+        self._drag_position = None
 
     def launch_command(self):
         cmd = self.input.text().strip()
@@ -343,6 +346,20 @@ class QuickLauncher(QWidget):
                 except:
                     pass
         return apps
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self._drag_active = True
+            self._drag_position = event.globalPos() - self.frameGeometry().topLeft()
+            event.accept()
+
+    def mouseMoveEvent(self, event):
+        if self._drag_active and event.buttons() & Qt.LeftButton:
+            self.move(event.globalPos() - self._drag_position)
+            event.accept()
+
+    def mouseReleaseEvent(self, event):
+        self._drag_active = False
 
 
 if __name__ == "__main__":

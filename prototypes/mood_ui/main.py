@@ -7,7 +7,8 @@ class DropDownWindow(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowFlags(QtCore.Qt.Popup | QtCore.Qt.FramelessWindowHint)
-        self.setFixedSize(300, 200)
+        # self.setFixedSize(300, 200)
+        self.setMinimumSize(300, 200)
 
         layout = QtWidgets.QGridLayout()
 
@@ -19,7 +20,7 @@ class DropDownWindow(QtWidgets.QWidget):
         for i in range(total):
             btn = QPushButton(f"m{i+1}")
             btn.setProperty("value", f"value-{i+1}")
-            btn.setFixedSize(50, 30)
+            btn.setFixedSize(50, 50)
             btn.clicked.connect(lambda _, x=i + 1: self.on_button_click(x))
             row = i // cols
             col = i % cols

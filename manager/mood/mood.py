@@ -10,7 +10,8 @@ class DropDownWindow(QtWidgets.QWidget):
         self.modules = modules
         self.tray_app = tray_app
         self.setWindowFlags(QtCore.Qt.Popup)
-        self.setFixedSize(300, 200)
+        # self.setFixedSize(300, 200)
+        self.setMinimumSize(300, 200)
         self.setup_ui()
         self.setup_shortcuts()
 
