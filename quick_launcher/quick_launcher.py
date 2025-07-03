@@ -21,39 +21,58 @@ class SearchWorker(QObject):
 
     def __init__(self, query, root, max_depth=4):
         super().__init__()
-        self.query = query
+        self.query = query.lower()  # Optimized lowercase
         self.root = root
         self.user_uid = os.getuid()
         self.max_depth = max_depth
+        self._cancel = False
+
+    def cancel(self):
+        self._cancel = True
 
     def run(self):
         results = []
         root_depth = self.root.rstrip(os.sep).count(os.sep)
+
         for dirpath, dirnames, filenames in os.walk(self.root):
+            if self._cancel:
+                return  # Stop immediately if cancelled
+
             # Limit search depth
             current_depth = dirpath.rstrip(os.sep).count(os.sep) - root_depth
             if current_depth >= self.max_depth:
                 dirnames[:] = []
-            # Filter out root-owned directories in-place
+
+            # Filter directories owned by user
             dirnames[:] = [
                 d for d in dirnames if self._is_owned_by_user(os.path.join(dirpath, d))
             ]
+
+            # Search directories
             for name in dirnames:
-                if self.query.lower() in name.lower():
+                if self.query in name.lower():
                     results.append((name, os.path.join(dirpath, name), "folder"))
-                    if len(results) >= 50:  # Limit for performance
-                        self.results_ready.emit(results)
-                        return
+                    if len(results) % 20 == 0:  # Emit in small batches
+                        self.results_ready.emit(results.copy())
+                        results.clear()
+                if self._cancel:
+                    return
+
+            # Search files
             for name in filenames:
                 full_path = os.path.join(dirpath, name)
                 if not self._is_owned_by_user(full_path):
                     continue
-                if self.query.lower() in name.lower():
+                if self.query in name.lower():
                     results.append((name, full_path, "file"))
-                    if len(results) >= 50:
-                        self.results_ready.emit(results)
-                        return
-        self.results_ready.emit(results)
+                    if len(results) % 20 == 0:
+                        self.results_ready.emit(results.copy())
+                        results.clear()
+                if self._cancel:
+                    return
+
+        if results:
+            self.results_ready.emit(results)
 
     def _is_owned_by_user(self, path):
         try:
