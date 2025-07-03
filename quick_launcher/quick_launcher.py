@@ -15,6 +15,9 @@ import sys
 import os
 import glob
 
+from PyQt5.QtWidgets import QMenu, QAction
+from PyQt5.QtGui import QClipboard
+
 
 class SearchWorker(QObject):
     results_ready = pyqtSignal(list)
@@ -194,6 +197,9 @@ class QuickLauncher(QWidget):
 
         self._drag_active = False
         self._drag_position = None
+
+        self.list_widget.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.list_widget.customContextMenuRequested.connect(self.show_context_menu)
 
     def launch_command(self):
         cmd = self.input.text().strip()
@@ -379,6 +385,28 @@ class QuickLauncher(QWidget):
 
     def mouseReleaseEvent(self, event):
         self._drag_active = False
+
+    def copy_path_to_clipboard(self, path):
+        clipboard = QApplication.clipboard()
+        clipboard.setText(path)
+
+    def show_context_menu(self, pos):
+        item = self.list_widget.itemAt(pos)
+        if not item:
+            return
+
+        data = item.data(Qt.UserRole)
+        if not data or data[1] == "action":
+            return
+
+        path, tag = data
+
+        menu = QMenu(self)
+        copy_action = QAction("Copy Path", self)
+        copy_action.triggered.connect(lambda: self.copy_path_to_clipboard(path))
+        menu.addAction(copy_action)
+
+        menu.exec_(self.list_widget.mapToGlobal(pos))
 
 
 if __name__ == "__main__":
