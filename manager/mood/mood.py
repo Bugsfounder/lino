@@ -1,7 +1,7 @@
 # manager/mood/mood.py
 from PyQt5 import QtWidgets, QtGui, QtCore
-from PyQt5.QtWidgets import QShortcut
-from PyQt5.QtGui import QKeySequence
+from PyQt5.QtWidgets import QShortcut, QToolTip
+from PyQt5.QtGui import QKeySequence, QFont
 
 
 class DropDownWindow(QtWidgets.QWidget):
@@ -10,12 +10,21 @@ class DropDownWindow(QtWidgets.QWidget):
         self.modules = modules
         self.tray_app = tray_app
         self.setWindowFlags(QtCore.Qt.Popup)
-        # self.setFixedSize(300, 200)
         self.setMinimumSize(300, 200)
         self.setup_ui()
         self.setup_shortcuts()
 
     def setup_ui(self):
+        self.setStyleSheet(
+            """
+            QToolTip {
+                background-color: yellow;
+                color: black;
+                border: 1px solid black;
+            }
+        """
+        )
+
         layout = QtWidgets.QGridLayout()
         cols = 2
         for i, mod in enumerate(self.modules):
@@ -31,8 +40,10 @@ class DropDownWindow(QtWidgets.QWidget):
             layout.addWidget(btn, row, col)
 
         # Add Exit link at bottom
-        exit_label = QtWidgets.QLabel('<a href="#">Exit</a>')
-        exit_label.setStyleSheet("color: blue; text-decoration: underline;")
+        exit_label = QtWidgets.QLabel(
+            '<a href="#" style="color:gray; text-decoration:none;">Exit</a>'
+        )
+        exit_label.setToolTip("Remove lino from tray")
         exit_label.setTextInteractionFlags(QtCore.Qt.TextBrowserInteraction)
         exit_label.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         exit_label.linkActivated.connect(QtWidgets.qApp.quit)

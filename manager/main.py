@@ -9,7 +9,7 @@ from mood.mood import DropDownWindow
 from clipboard.manager import ClipboardManager
 from clipboard.gui import ClipboardUI
 from functools import partial
-from quick_launcher.quick_launcher import QuickLauncher  # Import your QuickLauncher
+from quick_launcher.quick_launcher import QuickLauncher
 from logger.logger import Logger
 
 D_LOGGER = Logger(prod=False)
@@ -36,7 +36,7 @@ class TrayApp(QtWidgets.QApplication):
     def __init__(self, argv):
         D_LOGGER.info("Tray App Launched")
         super().__init__(argv)
-        self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon("assets/icons/clipboard.png"))
+        self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon("assets/logo.png"))
         self.dropdown = DropDownWindow(modules, self)
         self.tray.activated.connect(self.show_dropdown)
         self.tray.show()
