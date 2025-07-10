@@ -1,7 +1,7 @@
 # manager/mood/mood.py
 from PyQt5 import QtWidgets, QtGui, QtCore
-from PyQt5.QtWidgets import QShortcut, QToolTip
-from PyQt5.QtGui import QKeySequence, QFont
+from PyQt5.QtWidgets import QShortcut
+from PyQt5.QtGui import QKeySequence
 
 
 class DropDownWindow(QtWidgets.QWidget):
