@@ -1,2 +1,2 @@
 #!/bin/bash
-python -m runner.main
+python -m manager.main

@@ -97,3 +97,16 @@ Lino provides **one unique tray app** as the central hub for launching and contr
 ---
 
 <!-- sudo apt install libqt5x11extras5 -->
+
+```terminal
+# 1. Rebuild the PyInstaller binary
+pyinstaller --onefile clipboard/main.py -n lino
+
+# 2. Copy new binary to AppDir
+cp dist/lino AppDir/usr/bin/lino
+chmod +x AppDir/usr/bin/lino
+
+# 3. Build the AppImage
+appimage-builder --recipe AppImageBuilder.yml
+
+```
