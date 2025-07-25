@@ -174,7 +174,7 @@ class QuickLauncher(QWidget):
         self.setLayout(layout)
 
         # Show the window first to get its size
-        self.show()
+        # self.show()
         frame_geom = self.frameGeometry()
         screen = QApplication.primaryScreen()
         center_point = screen.availableGeometry().center()

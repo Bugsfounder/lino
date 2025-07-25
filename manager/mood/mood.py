@@ -31,7 +31,8 @@ class DropDownWindow(QtWidgets.QWidget):
             btn = QtWidgets.QPushButton()
             btn.setToolTip(f"{mod["name"]} - {mod['shortcut-key']}")
             # btn.setText(mod["name"])
-            btn.setIcon(QtGui.QIcon(mod["icon"]))
+            # btn.setIcon(QtGui.QIcon(mod["icon"]))
+            btn.setIcon(self.style().standardIcon(mod["icon"]))
             btn.setIconSize(QtCore.QSize(24, 24))
             btn.clicked.connect(
                 lambda checked, key=mod["key"]: self.tray_app.launch_module(key)

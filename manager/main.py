@@ -18,13 +18,15 @@ P_LOGGER = Logger(prod=True)
 modules = [
     {
         "name": "Clipboard",
-        "icon": "assets/icons/clipboard.png",
+        # "icon": "assets/icons/clipboard.png", # causing trouble in appimage, TODO: can implement it later
+        "icon": QtWidgets.QStyle.SP_FileDialogDetailedView,
         "shortcut-key": "Ctrl+Shift+c",
         "key": "clipboard",
     },
     {
         "name": "Quick Launcher",
-        "icon": "assets/icons/quick_launcher.png",
+        # "icon": "assets/icons/quick_launcher.png",
+        "icon": QtWidgets.QStyle.SP_FileDialogListView,
         "shortcut-key": "Ctrl+Space",
         "key": "quicklauncher",
     },
@@ -36,7 +38,9 @@ class TrayApp(QtWidgets.QApplication):
     def __init__(self, argv):
         D_LOGGER.info("Tray App Launched")
         super().__init__(argv)
+        # icon = self.style().standardIcon(QtWidgets.QStyle.SP_ComputerIcon)
         self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon("assets/logo.png"))
+        # self.tray = QtWidgets.QSystemTrayIcon(icon)
         self.dropdown = DropDownWindow(modules, self)
         self.tray.activated.connect(self.show_dropdown)
         self.tray.show()
@@ -59,7 +63,6 @@ class TrayApp(QtWidgets.QApplication):
             self.dropdown.show_at_cursor()
 
     def launch_module(self, key):
-        # Hide dropdown, show the requested module UI
         self.dropdown.hide()
         win = self.module_windows.get(key)
         if win:
