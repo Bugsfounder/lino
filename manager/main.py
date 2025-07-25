@@ -38,8 +38,8 @@ class TrayApp(QtWidgets.QApplication):
     def __init__(self, argv):
         D_LOGGER.info("Tray App Launched")
         super().__init__(argv)
-        # icon = self.style().standardIcon(QtWidgets.QStyle.SP_ComputerIcon)
-        self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon("assets/logo.png"))
+        icon = self.style().standardIcon(QtWidgets.QStyle.SP_FileDialogContentsView)
+        # self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon("assets/logo.png"))
         # self.tray = QtWidgets.QSystemTrayIcon(icon)
         self.dropdown = DropDownWindow(modules, self)
         self.tray.activated.connect(self.show_dropdown)
