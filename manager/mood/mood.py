@@ -13,6 +13,7 @@ class DropDownWindow(QtWidgets.QWidget):
         self.setMinimumSize(300, 200)
         self.setup_ui()
         self.setup_shortcuts()
+        self.setFocusPolicy(QtCore.Qt.StrongFocus)
 
     def setup_ui(self):
         self.setStyleSheet(
@@ -68,3 +69,7 @@ class DropDownWindow(QtWidgets.QWidget):
         w, h = self.width(), self.height()
         self.move(cursor_pos.x() - w // 2, cursor_pos.y() + 10)
         self.show()
+
+    def focusOutEvent(self, event):
+        self.hide()
+        event.accept()

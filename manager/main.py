@@ -62,7 +62,10 @@ class TrayApp(QtWidgets.QApplication):
 
     def show_dropdown(self, reason):
         if reason == QtWidgets.QSystemTrayIcon.Trigger:
-            self.dropdown.show_at_cursor()
+            if self.dropdown.isVisible():
+                self.dropdown.hide()
+            else:
+                self.dropdown.show_at_cursor()
 
     def launch_module(self, key):
         self.dropdown.hide()
