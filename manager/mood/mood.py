@@ -29,7 +29,7 @@ class DropDownWindow(QtWidgets.QWidget):
         cols = 2
         for i, mod in enumerate(self.modules):
             btn = QtWidgets.QPushButton()
-            btn.setToolTip(f"{mod["name"]} - {mod['shortcut-key']}")
+            btn.setToolTip(f"{mod['name']} - {mod['shortcut-key']}")
             # btn.setText(mod["name"])
             # btn.setIcon(QtGui.QIcon(mod["icon"]))
             btn.setIcon(self.style().standardIcon(mod["icon"]))

@@ -10,10 +10,12 @@ from clipboard.manager import ClipboardManager
 from clipboard.gui import ClipboardUI
 from functools import partial
 from quick_launcher.quick_launcher import QuickLauncher
-from logger.logger import Logger
 
-D_LOGGER = Logger(prod=False)
-P_LOGGER = Logger(prod=True)
+# from llogger.llogger import lLogger
+
+# D_LOGGER = lLogger(prod=False)
+# D_LOGGER = lLogger(prod=False)
+# P_LOGGER = lLogger(prod=True)
 
 modules = [
     {
@@ -36,10 +38,10 @@ modules = [
 
 class TrayApp(QtWidgets.QApplication):
     def __init__(self, argv):
-        D_LOGGER.info("Tray App Launched")
+        # D_LOGGER.info("Tray App Launched")
         super().__init__(argv)
         icon = self.style().standardIcon(QtWidgets.QStyle.SP_FileDialogContentsView)
-        # self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon("assets/logo.png"))
+        self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon("assets/logo.png"))
         # self.tray = QtWidgets.QSystemTrayIcon(icon)
         self.dropdown = DropDownWindow(modules, self)
         self.tray.activated.connect(self.show_dropdown)

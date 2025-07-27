@@ -117,7 +117,7 @@ class QuickLauncher(QWidget):
         layout.setSpacing(8)
 
         self.input = QLineEdit(self)
-        self.input.setPlaceholderText("Type to launch... (e.g., firefox)")
+        self.input.setPlaceholderText("Type to launch... (e.g., firefox), start with = for calculation")
         self.input.returnPressed.connect(self.launch_command)
         self.input.textChanged.connect(self.on_text_changed)
         self.input.setFont(font)
