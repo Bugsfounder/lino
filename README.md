@@ -1,118 +1,99 @@
----
-# Lino
+# 🐧 Lino
 
-## Overview
+**Lino** is a Linux utility inspired by PowerToys — a single tray app that acts as the **central hub** for launching and controlling all modules like Clipboard Manager, Quick Launcher, and more.
+Fast ⚡ lightweight 🎯 and fun 😄.
 
-Lino provides **one unique tray app** as the central hub for launching and controlling all modules like Clipboard Manager, Quick Launcher, etc.
----
+## 📖 Overview
 
-## Key Idea
-
-- **Single tray icon** runs in background.
-- User presses a **single global shortcut** (e.g., `Ctrl+Space`) to open this tray UI.
+- One tray icon runs in the background.
+- Press a global shortcut (e.g., `Ctrl+Space`) to open the tray UI.
 - Tray UI shows:
 
   - Fun messages or jokes
-  - Buttons/list for launching modules
+  - Buttons to launch modules
   - Shortcut keys info
 
-- After launching a module via tray, the tray UI hides automatically.
-- To launch another module or view shortcuts, press shortcut key again.
+- After launching a module, tray UI hides automatically.
+- Press shortcut key again anytime to reopen the tray.
 
----
+## ✨ Benefits
 
-## Benefits
-
-- Keeps system clean with only one tray process.
-- No need for multiple tray icons or complicated system integration.
-- Easy to maintain and extend modules.
+- Clean system: only one tray process.
+- No clutter from multiple tray icons.
+- Easy to extend modules.
 - Fun, interactive, and user-friendly experience.
 
----
+## ⚡ Functionalities & Shortcuts
 
-## Functionalities & Shortcut Table
+| Functionality            | Description                       | Shortcut / Trigger      |
+| ------------------------ | --------------------------------- | ----------------------- |
+| Open Lino Tray UI        | Central tray window with options  | `Ctrl + Space` (global) |
+| Launch Clipboard Manager | Start Clipboard Manager           | Button in Tray UI       |
+| Launch Quick Launcher    | Start Quick Launcher              | Button in Tray UI       |
+| Show Shortcut Keys       | Display shortcuts for all modules | Button in Tray UI       |
+| Show Fun Message / Joke  | Random joke/emoji when tray opens | On tray open            |
+| Exit Lino                | Quit the entire app               | Exit button in Tray UI  |
 
-| Functionality            | Description                               | Trigger / Shortcut           |
-| ------------------------ | ----------------------------------------- | ---------------------------- |
-| Open Lino Tray UI        | Show the central tray window with options | Global Shortcut (Ctrl+Space) |
-| Launch Clipboard Manager | Starts Clipboard Manager module           | Click button in Tray UI      |
-| Launch Quick Launcher    | Starts Quick Launcher module              | Click button in Tray UI      |
-| Show Shortcut Keys       | Display all shortcuts for Lino modules    | Button inside Tray UI        |
-| Show Fun Message / Joke  | Shows random jokes or emojis on tray open | On tray open                 |
-| Exit Lino                | Quit the entire Lino application          | Button inside Tray UI        |
+## 🖥️ How It Works
 
----
+1. **Startup** → Tray app launches in background.
+2. **Shortcut Pressed** → Tray UI pops up with welcome message + module buttons.
+3. **Module Launch** → Click a module → tray hides → module opens.
+4. **Repeat** → Press shortcut again to bring tray back.
 
-## How It Works
+## ⚙️ Technical Notes
 
-1. **Startup**: Lino tray app launches in background, listens for global shortcut.
-2. **Shortcut Pressed**: Tray UI pops up with a welcome message and module buttons.
-3. **Module Launch**: User clicks any module button; tray hides and module window shows.
-4. **Repeat**: User presses shortcut again to open tray for next action.
+- Tray app uses **PyQt5** with `QSystemTrayIcon`.
+- Global shortcuts managed using system hooks (e.g., `pynput`).
+- Modules run in separate windows, launched on demand.
+- Tray UI shows daily jokes/emojis for engagement.
+- Adding modules = just add buttons in tray config.
 
----
+## 🎯 Recommended Shortcuts
 
-## Technical Notes
+| Module / Action          | Shortcut           | Why (UX & Safety)         |
+| ------------------------ | ------------------ | ------------------------- |
+| 🌐 Open Tray UI          | `Ctrl + Space`     | Easy, like Spotlight      |
+| 📋 Clipboard Manager     | `Ctrl + Shift + V` | Natural for paste actions |
+| 🚀 Quick Launcher        | `Alt + Space`      | Familiar (GNOME run)      |
+| 🤖 AI Assistant (future) | `Ctrl + Shift + A` | “A” for assistant         |
+| 📁 File Search           | `Ctrl + Shift + F` | Standard for find/search  |
+| 🔎 App Search & Run      | `Alt + Shift + R`  | “R” for run               |
+| 🎨 Theme Switcher        | `Ctrl + Shift + T` | “T” for theme             |
+| 🐧 Pet / LOMY            | `Ctrl + Shift + P` | “P” for pet, playful      |
+| ❌ Exit Lino             | `Ctrl + Shift + Q` | Standard quit             |
 
-- The tray app manages global shortcut using system-level hooks (e.g., `pynput`).
-- Modules run as separate processes or windows, launched on demand.
-- Tray UI updates daily with fun messages or emojis to engage users.
-- Adding new modules only requires adding buttons to the tray UI.
+👉 All combos use `Ctrl+Shift+` or `Alt+Shift+` to avoid Linux DE conflicts.
 
----
+## 🎥 Video Demo
 
-## Next Steps
+![Watch full video](demo/demo.gif)
+<br>
+[Watch full video](demo/demo.webm)
 
-- Build the tray UI with PyQt5.
-- Implement global shortcut listener inside tray app.
-- Add buttons and functionality for existing modules.
-- Create config for jokes/messages and shortcuts.
+## 🛠️ Development & Packaging
 
----
-
-### 🎯 Shortcut Key Table for Lino Modules
-
-| Module / Action            | Recommended Shortcut | Reason (UX & Safety)                      |
-| -------------------------- | -------------------- | ----------------------------------------- |
-| 🌐 Open Lino Tray UI       | `Ctrl + Space`       | Comfortable, easy access (like Spotlight) |
-| 📋 Clipboard Manager       | `Ctrl + Shift + V`   | Natural for paste-related action          |
-| 🚀 Quick Launcher          | `Alt + Space`        | Familiar to users (like GNOME Run)        |
-| 🤖 AI Assistant / Chat     | `Ctrl + Shift + A`   | "A" for assistant, rarely conflicts       |
-| 📁 File Search Tool        | `Ctrl + Shift + F`   | Standard for find/search                  |
-| 🔎 App Search & Run        | `Alt + Shift + R`    | "R" for run, uncommon combo               |
-| 🎨 Appearance/Theme Switch | `Ctrl + Shift + T`   | "T" for theme, not used much globally     |
-| 🛠️ Settings Panel          | `Ctrl + Shift + S`   | "S" for settings                          |
-| 🐧 Pet / LOMY Module       | `Ctrl + Shift + P`   | "P" for pet, easy and playful             |
-| ❌ Exit / Quit Lino        | `Ctrl + Shift + Q`   | Standard quit (only from tray UI)         |
-
----
-
-### 🧠 Tips:
-
-- All combos use `Ctrl+Shift+` or `Alt+Shift+` → avoids OS conflicts.
-- Avoid `Ctrl+Alt+...` → often reserved by Linux DEs (like switching workspaces).
-- Always let user **customize shortcuts** via config if possible (future feature).
-- In your tray UI, you can **show this table** when user clicks “Shortcuts”.
-
----
-
-<!-- sudo apt install libqt5x11extras5 -->
-
-```terminal
-0. if AppDir is missing:
+```bash
+# If AppDir is missing
 appimage-builder --recipe AppImageBuilder.yml
 
-# 1. Rebuild the PyInstaller binary
+# 1. Rebuild PyInstaller binary
 pyinstaller --onefile --add-data "manager/mood:manager/mood" manager/main.py -n lino
 
-# 2. Copy new binary to AppDir
+# 2. Copy binary to AppDir
 cp dist/lino AppDir/usr/bin/lino
 chmod +x AppDir/usr/bin/lino
 
-# 3. Build the AppImage
+# 3. Build AppImage
 appimage-builder --recipe AppImageBuilder.yml
-
-
-
-
 ```
+
+## 🗺️ Roadmap
+
+- Add more modules (Color Picker, Window Manager, etc.)
+- Configurable shortcuts
+- Better integration across desktop environments
+
+## 📜 License
+
+MIT License
