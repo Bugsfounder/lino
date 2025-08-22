@@ -39,8 +39,11 @@ class DropDownWindow(QtWidgets.QWidget):
 class TrayApp(QtWidgets.QApplication):
     def __init__(self, argv):
         super().__init__(argv)
-        # self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon("icon.png"))
-        self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon("/assets/lino.png"))
+
+        # Use a standard Qt icon (Yes button)
+        yes_icon = self.style().standardIcon(QtWidgets.QStyle.SP_DialogYesButton)
+        self.tray = QtWidgets.QSystemTrayIcon(yes_icon)
+
         self.tray.setToolTip("hello from lino")
         self.dropdown = DropDownWindow()
         self.tray.activated.connect(self.on_tray_activated)

@@ -23,36 +23,47 @@ class DropDownWindow(QtWidgets.QWidget):
                 color: black;
                 border: 1px solid black;
             }
-        """
+            """
         )
 
         layout = QtWidgets.QGridLayout()
+        layout.setVerticalSpacing(2)  # reduce gap between rows
         cols = 2
+
+        title = QtWidgets.QLabel("Lino - Menu")
+        title.setStyleSheet("font-size: 20px; font-weight: bold;")
+        title.setAlignment(QtCore.Qt.AlignCenter)
+        layout.addWidget(title, 0, 0, 1, cols)
+
+        sub_title = QtWidgets.QLabel("Hover on icons to know their purpose")
+        sub_title.setStyleSheet(
+            "font-size: 12px; color: gray; margin-top: 2px; margin-bottom: 4px; padding:1px"
+        )
+        sub_title.setAlignment(QtCore.Qt.AlignCenter)
+        # layout.addWidget(sub_title, 1, 0, 1, cols)
+
         for i, mod in enumerate(self.modules):
             btn = QtWidgets.QPushButton()
+            # btn.setStyleSheet("background-color: transparent; border: none;")
+
             btn.setToolTip(f"{mod['name']} - {mod['shortcut-key']}")
-            # btn.setText(mod["name"])
-            # btn.setIcon(QtGui.QIcon(mod["icon"]))
             btn.setIcon(self.style().standardIcon(mod["icon"]))
-            btn.setIconSize(QtCore.QSize(24, 24))
+            btn.setIconSize(QtCore.QSize(30, 30))
             btn.clicked.connect(
                 lambda checked, key=mod["key"]: self.tray_app.launch_module(key)
             )
             row, col = divmod(i, cols)
-            layout.addWidget(btn, row, col)
+            layout.addWidget(btn, row + 2, col)
 
-        # Add Exit link at bottom
-        exit_label = QtWidgets.QLabel(
-            '<a href="#" style="color:gray; text-decoration:none;">Exit</a>'
-        )
+        exit_label = QtWidgets.QLabel('<a href="#" style="color:gray;">Exit</a>')
         exit_label.setToolTip("Remove lino from tray")
         exit_label.setTextInteractionFlags(QtCore.Qt.TextBrowserInteraction)
         exit_label.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
         exit_label.linkActivated.connect(QtWidgets.qApp.quit)
-
         layout.addWidget(
             exit_label, layout.rowCount(), 0, 1, cols, alignment=QtCore.Qt.AlignCenter
         )
+
         self.setLayout(layout)
 
     def setup_shortcuts(self):

@@ -2,10 +2,15 @@
 import sys
 import os
 
+# sys.path.append(os.path.dirname(__file__))
+
+
+# sys.path.append(os.path.abspath("path/to/mood"))
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from PyQt5 import QtWidgets, QtGui, QtCore
-from mood.mood import DropDownWindow
+from manager.mood.mood import DropDownWindow
 from clipboard.manager import ClipboardManager
 from clipboard.gui import ClipboardUI
 from functools import partial
@@ -41,8 +46,9 @@ class TrayApp(QtWidgets.QApplication):
         # D_LOGGER.info("Tray App Launched")
         super().__init__(argv)
         icon = self.style().standardIcon(QtWidgets.QStyle.SP_FileDialogContentsView)
-        self.tray = QtWidgets.QSystemTrayIcon(QtGui.QIcon("assets/logo.png"))
-        # self.tray = QtWidgets.QSystemTrayIcon(icon)
+        # Use a standard Qt icon (Yes button)
+        yes_icon = self.style().standardIcon(QtWidgets.QStyle.SP_DialogYesButton)
+        self.tray = QtWidgets.QSystemTrayIcon(yes_icon)
         self.dropdown = DropDownWindow(modules, self)
         self.tray.activated.connect(self.show_dropdown)
         self.tray.show()
