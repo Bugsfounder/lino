@@ -97,3 +97,6 @@ appimage-builder --recipe AppImageBuilder.yml
 ## 📜 License
 
 MIT License
+
+
+added my shalini
